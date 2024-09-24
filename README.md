@@ -9,10 +9,11 @@ Template project for setting up a TypeScript monorepo
 
 </div>
 
-----
+---
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of content**
 
 - [Features](#features)
@@ -66,8 +67,8 @@ pnpm i
 
 See the following blog posts:
 
-- [How to set up a TypeScript monorepo and make Go to definition work](https://medium.com/@NiGhTTraX/how-to-set-up-a-typescript-monorepo-with-lerna-c6acda7d4559)
-- [Making TypeScript monorepos play nice with other tools](https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680)
+- [How to set up a TypeScript monorepo and make Go to definition work](https://medium.com/@nighttrax/how-to-set-up-a-typescript-monorepo-with-lerna-c6acda7d4559)
+- [Making TypeScript monorepos play nice with other tools](https://medium.com/@nighttrax/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680)
 
 If you're looking for the project references solution checkout the [`project-references`](https://github.com/NiGhTTraX/ts-monorepo/tree/project-references) branch.
 
@@ -133,8 +134,8 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   resolve: {
-    plugins: [new TsconfigPathsPlugin()]
-  }
+    plugins: [new TsconfigPathsPlugin()],
+  },
 };
 ```
 
@@ -144,7 +145,7 @@ See the full example [here](apps/webpack).
 
 If you use `Babel` then see [this example](apps/jest-babel) from the [Babel](#babel) section above.
 
-If you use [ts-jest](https://github.com/kulshekhar/ts-jest) then you can use its `pathsToModuleNameMapper` helper: 
+If you use [ts-jest](https://github.com/kulshekhar/ts-jest) then you can use its `pathsToModuleNameMapper` helper:
 
 ```js
 const { pathsToModuleNameMapper } = require("ts-jest");
@@ -179,9 +180,9 @@ module.exports = (config) => {
 
   // Let Babel compile outside of src/.
   const oneOfRule = config.module.rules.find((rule) => rule.oneOf);
-    const tsRule = oneOfRule.oneOf.find((rule) =>
-      rule.test.toString().includes("ts|tsx")
-    );
+  const tsRule = oneOfRule.oneOf.find((rule) =>
+    rule.test.toString().includes("ts|tsx")
+  );
   tsRule.include = undefined;
   tsRule.exclude = /node_modules/;
 
@@ -201,10 +202,7 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    react(), 
-    tsconfigPaths()
-  ],
+  plugins: [react(), tsconfigPaths()],
 });
 ```
 
@@ -250,7 +248,7 @@ See the full example [here](apps/nestjs).
 [Extend Storybook's webpack config](https://storybook.js.org/docs/react/builders/webpack#typescript-module-resolution) and apply the [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin):
 
 ```js
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   webpackFinal: async (config) => {
